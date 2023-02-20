@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% include "nav.html" %}
+{% block content %}
+<head>
+<style>
+  .centerAlign{
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  }
+</style>
+</head>
+<br><br><br>
+
+  <form method="POST">
+    <br><br>
+    <h3 align="center">Team Progress Tracker (Notes):</h3><br>
+    <div class="form-group">
+    </div>
+      <div class="centerAlign">Your Progress Update:</div>
+      <input
+        type="text"
+        class="form-control"
+        id="update"
+        name="update"
+        style="width: 400px; height: 80px; margin: auto;"
+      /><br><br>
+    <button type="submit" class="btn btn-login" style="margin-left:auto;margin-right:auto;display:block">Submit</button>
+  <br>
+  </form>
+
+  <br><br>
+  <h3 align="center">Formal Team Updates on Deal Progress:</h3><br>
+  <ul class="list-group list-group-flush" id="notes">
+    {% for note in all_notes %}
+    <li class="list-group-item">
+      <strong>{{ note.name }}:</strong>
+      {% if note.name == current_user.first_name %}
+        {{ note.update }}
+        <a href="/deletenote/{{note.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')" style="margin-left:95%;">Delete</a><br><br>
+      {% else %}
+        {{ note.update }}<br><br><br>
+      {% endif %}
+      {% endfor %}
+  {% endblock %}

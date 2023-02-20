@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% include "admin_nav.html" %}
+
+{% block title %} View Notes {% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        .space {
+        width: 10px;
+        height: auto;
+        display: inline-block;
+        }
+    </style>
+</head>
+<br>
+<h2>View Notes</h2>
+<br>
+<div class="norm-container">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Note</th>
+                        <th>Date Created</th>
+                    </tr>
+                   {% for row in notes %}
+                    <tr>
+                        <td style="text-align:center">{{row.user_id}}</td>
+                        <td style="text-align:center">{{row.data}}</td>
+                        <td style="text-align:center">{{row.date}}</td>
+                    </tr>
+                    {% endfor %}
+                    
+      </div>
+      </div>
+     </div></table>
+   </div>
+ </div>
+ </div>
+{% endblock %}

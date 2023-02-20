@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% include "nav.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<div class="norm-container">
+    <strong>Welcome to Arpwood Home:       </strong>{{ current_user.first_name }}<br><br>
+    <h3 align="center">Your Team's Schedule for the Month:</h3><br>
+    <center><iframe src="https://calendar.google.com/calendar/embed?src=q2op5eoh8nh2k5ndrfodiofrng%40group.calendar.google.com&ctz=Asia%2FKolkata"
+                    width="1100" height="500"></iframe></center>
+    <br><br>
+    <h3 align="center">Personal Notes:</h3><br>
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in user.notes %}
+      <li class="list-group-item">
+        <strong>{{ note.date }}</strong><br>
+          {{ note.data }}<br>
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="POST">
+      <textarea name="note" id="note" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
+    </form>
+    <br><br>
+    <h3 align="center">Summary of Active Deals:</h3>
+    <br>
+
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Deal ID</th>
+                        <th>Deal Name</th>
+                        <th>Client ID</th>
+                        <th>Comments</th>
+                        <th>Date of Initiation</th>
+                        <th>Date Last Updated</th>
+                    </tr>
+                    {% for row in ongoing_deals %}
+                        <tr>
+                            <td style="text-align:center">{{row.dealid}}</td>
+                            <td style="text-align:center">{{row.dealname}}</td>
+                            <td style="text-align:center">{{row.clientid}}</td>
+                            <td style="text-align:center">{{row.comments}}</td>
+                            <td style="text-align:center">{{row.datecreated}}</td>
+                            <td style="text-align:center">{{row.date}}</td>
+                            <td style="text-align:center">
+                            </td>
+                        </tr>
+                    {% endfor %}
+    </table>
+   </div>
+ </div>
+ </div>
+
+{% endblock %}

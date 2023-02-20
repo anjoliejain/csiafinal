@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% include "nav.html" %}{% block title %}Deals{% endblock %} {% block
+content %}
+<head>
+<style>
+  .centerAlign{
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  }
+</style>
+</head>
+<form method="POST" class = 'norm-container'>
+  <br><br>
+  <h3 align="center">Input New Deal</h3><br>
+  <div class="form-group">
+    <div class="centerAlign">Deal ID:</div>
+    <input
+      type="text"
+      class="form-control"
+      id="dealid"
+      name="dealid"
+      style="width: 400px; margin: auto;"
+    />
+  </div>
+  <div class="form-group">
+    <div class="centerAlign">Deal Name:</div>
+    <input
+      type="text"
+      class="form-control"
+      id="dealName"
+      name="dealName"
+      style="width: 400px; margin: auto;"
+    />
+  </div>
+  <div class="form-group">
+    <div class="centerAlign">Client Name:</div>
+    <input
+      type="text"
+      class="form-control"
+      id="clientid"
+      name="clientid"
+      style="width: 400px; margin: auto;"
+    />
+  </div>
+  <div class="form-group">
+    <div class="centerAlign">Comments:</div>
+    <input
+      type="text"
+      class="form-control"
+      id="comments"
+      name="comments"
+      style="width: 400px; height: 80px; margin: auto;"
+    />
+  </div>
+  <div class="form-group">
+   <div class="centerAlign">Deal Status:</div>
+    <div align="center">
+    <select id="dealstatus" name="dealstatus" style="width:400px; margin-left: auto; margin-right: auto;">
+      <option value="Ongoing">Ongoing</option>
+      <option value="Cold">Cold</option>
+      <option value="Closed">Closed</option>
+    </select>
+    </div>
+  </div><br>
+  <div class="form-group">
+    <div class="centerAlign">Date of Initiation:</div>
+    <input
+      type="date"
+      class="form-control"
+      id="datecreated"
+      name="datecreated"
+      style="width: 400px; margin: auto;"
+    />
+  <div class="form-group">
+    <div class="centerAlign">Date Last Updated:</div>
+    <input
+      type="date"
+      class="form-control"
+      id="date"
+      name="date"
+      style="width: 400px; margin: auto;"
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block">Submit</button>
+  <br /><br/><br/>
+
+</form>
+<br><br><br>
+{% endblock %}

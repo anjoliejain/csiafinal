@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% include "admin_nav.html" %}
+
+{% block title %} View Users {% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        .space {
+        width: 10px;
+        height: auto;
+        display: inline-block;
+        }
+    </style>
+</head>
+<br>
+<h2>View Users</h2>
+<br>
+<div class="norm-container">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th style="text-align:center">Employee ID</th>
+                        <th style="text-align:center">Employee First Name</th>
+                        <th style="text-align:center">Employee Email</th>
+                    </tr>
+                   {% for row in employees %}
+                    <tr>
+                        <td style="text-align:center">{{row.id}}</td>
+                        <td style="text-align:center">{{row.first_name}}</td>
+                        <td style="text-align:center">{{row.email}}</td>
+                        <td style="text-align:center">
+                            <a href="/admindelete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a><br><br>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+      </div>
+      </div>
+     </div></table>
+   </div>
+ </div>
+ </div>
+{% endblock %}

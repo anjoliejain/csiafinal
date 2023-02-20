@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% include "admin_nav.html" %}
+
+{% block title %} View Deals {% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        .space {
+        width: 10px;
+        height: auto;
+        display: inline-block;
+        }
+    </style>
+</head>
+<br>
+<h2>Manage Deals</h2>
+<br>
+<div class="norm-container">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Deal ID</th>
+                        <th>Deal Name</th>
+                        <th>Client ID</th>
+                        <th>Comments</th>
+                        <th>Deal Status</th>
+                        <th>Date of Initiation</th>
+                        <th>Date Last Updated</th>
+                    </tr>
+                   {% for row in deals %}
+                    <tr>
+                        <td style="text-align:center">{{row.dealid}}</td>
+                        <td style="text-align:center">{{row.dealname}}</td>
+                        <td style="text-align:center">{{row.clientid}}</td>
+                        <td style="text-align:center">{{row.comments}}</td>
+                        <td style="text-align:center">{{row.dealstatus}}</td>
+                        <td style="text-align:center">{{row.datecreated}}</td>
+                        <td style="text-align:center">{{row.date}}</td>
+                        <td style="text-align:center">
+                            <a href="/update/{{row.dealid}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.dealid}}">Edit</a><br><br>
+                            <a href="/delete/{{row.dealid}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a><br><br>
+                            <a href="/admin-dealinterface/{{row.dealid}}" class="btn btn-primary" style="width: 130;">Open Deal Interface</a>
+                        </td>
+                    </tr>
+
+     <div id="modaledit{{row.dealid}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+       <div class="modal-header"><h4 class="modal-title">Update Information</h4></div>
+        <div class="modal-body">
+        <form action="{{url_for('views.update')}}" method="POST">
+         <div class="form-group">
+          <label>Deal Name:</label>
+          <input type="hidden"  name="dealid" value="{{row.dealid}}">
+          <input type="text" class="form-control" name="dealname" value="{{row.dealname}}">
+         </div>
+         <div class="form-group">
+          <label>Client ID:</label>
+          <input type="text" class="form-control" name="clientid" value="{{row.clientid}}">
+         </div>
+         <div class="form-group">
+          <label>Comments:</label>
+          <input type="text" class="form-control" name="comments" value="{{row.comments}}">
+         </div>
+         <div class="form-group">
+          <label>Deal Status:</label>
+             <select id="dealstatus" name="dealstatus" style="width:465px; margin-left: auto; margin-right: auto;">
+                 {% if row.dealstatus =="Ongoing" %}
+                    <option value="Ongoing" selected="selected">Ongoing</option>
+                    <option value="Cold">Cold</option>
+                    <option value="Closed">Closed</option>
+                 {% elif row.dealstatus =="Cold" %}
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Cold" selected="selected">Cold</option>
+                    <option value="Closed">Closed</option>
+                 {% else %}
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Cold">Cold</option>
+                    <option value="Closed" selected="selected">Closed</option>
+                 {% endif %}
+            </select>
+         </div>
+         <div class="form-group">
+          <label>Date Last Updated:</label>
+          <input type="date" class="form-control" name="date" value="{{row.date}}">
+         </div>
+         <div class="form-group">
+          <button class="btn btn-primary" type="submit">Update</button>
+         </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      </div>
+     </div>
+     {% endfor %}
+    </table>
+   </div>
+ </div>
+ </div>
+    <a href="{{ url_for('views.download_all_deals_report') }}"><button type="button" class="btn btn-primary btn-inline">Generate PDF Report of All Deals</button></a>
+    <div class="space"></div>
+    <a href="{{ url_for('views.download_ongoing_deals_report') }}"><button type="button" class="btn btn-primary btn-inline">Generate PDF Report of Ongoing Deals</button></a>
+    <div class="space"></div>
+    <a href="{{ url_for('views.download_closed_deals_report') }}"><button type="button" class="btn btn-primary btn-inline">Generate PDF Report of Closed Deals</button></a><br><br>
+
+{% endblock %}

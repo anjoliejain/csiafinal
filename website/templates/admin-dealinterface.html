@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% include "admin_nav.html" %}
+{% block content %}
+<head>
+<style>
+  .centerAlign{
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  }
+</style>
+</head>
+<br><br><br>
+<h3 align="center">Formal Team Updates on Deal Progress:</h3><br>
+<ul class="list-group list-group-flush" id="notes"></ul>
+  {% for note in all_notes %}
+  <li class="list-group-item">
+    <strong>{{ note.name }}:</strong>
+      {{ note.update }}
+      <a href="/admin-deletenote/{{note.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')" style="margin-left:94%;">Delete</a><br><br>
+    {% endfor %}
+{% endblock %}
+  </li>

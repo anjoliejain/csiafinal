@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% include "nav.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+<head>
+<style>
+  .centerAlign{
+  margin: auto;
+  width: 10%;
+  text-align: center;
+  padding: 10px;
+  }
+</style>
+</head>
+
+
+  <form method="POST">
+    <br><br><br><br>
+    <br><br><br><br>
+    <h3 align="center">Login</h3>
+    <div class="form-group">
+      <div class="centerAlign">Email</div>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        style="width: 300px; margin: auto;"
+      />
+    </div>
+    <div class="form-group">
+      <div class="centerAlign">Password</div>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        style="width: 300px; margin: auto;"
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-login" style="margin-left:auto;margin-right:auto;display:block">Login</button>
+    <br><br><br><br><br><br><br><br><br>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      /* Add custom styles for a professional look */
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+
+      .norm-container {
+        padding: 10px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        max-width: 1140px;
+        margin:auto
+      }
+
+      .btn-danger1 {
+        background-color: #FF0000;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .btn-delete {
+        background-color: #FF0000;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: white;
+        width: 25%;
+      }
+
+      h1 {
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-control {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+      .btn-primary {
+        background-color: #0077c9;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 100%;
+      }
+      .btn-login {
+        background-color: #0077c9;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: white;
+        width: 25%;
+      }
+      .btn-warning{
+        background-color: #e6cc00;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 20px;
+        width: 100%;
+      }
+      .btn-primary:hover {
+        background-color: #005da0;
+        cursor: pointer;
+      }
+      .jumbotron {
+        background-color: #F2F2F2;
+      }
+
+    </style>
